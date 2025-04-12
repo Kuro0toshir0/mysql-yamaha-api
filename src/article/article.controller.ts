@@ -15,7 +15,7 @@ export class ArticleController {
   @UseInterceptors(FileInterceptor('imageUrl'))  // Menangani file upload dengan Multer
   create(@Body() createArticleDto: CreateArticleDto, @UploadedFile() file: Express.Multer.File) {
     if (file) {
-      createArticleDto.thumbnail = path.join('uploads', file.filename);  // Menyimpan path file di DB
+      createArticleDto.thumbnail = path.join('../uploads', file.filename);  // Menyimpan path file di DB
     }
     return this.Articleservice.create(createArticleDto);
   }

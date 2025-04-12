@@ -190,6 +190,11 @@ exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
   imageUrl: 'imageUrl'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.EventOrderByRelevanceFieldEnum = {
   title: 'title',
   description: 'description',

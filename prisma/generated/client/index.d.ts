@@ -5231,7 +5231,7 @@ export namespace Prisma {
     description: string
     location: string
     date: Date
-    image: string
+    image: string | null
     createdAt: Date
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
@@ -5287,7 +5287,7 @@ export namespace Prisma {
       description: string
       location: string
       date: Date
-      image: string
+      image: string | null
       createdAt: Date
     }, ExtArgs["result"]["event"]>
     composites: {}
@@ -6103,6 +6103,14 @@ export namespace Prisma {
   export type GalleryOrderByRelevanceFieldEnum = (typeof GalleryOrderByRelevanceFieldEnum)[keyof typeof GalleryOrderByRelevanceFieldEnum]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const EventOrderByRelevanceFieldEnum: {
     title: 'title',
     description: 'description',
@@ -6399,7 +6407,7 @@ export namespace Prisma {
     description?: StringFilter<"Event"> | string
     location?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
-    image?: StringFilter<"Event"> | string
+    image?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
   }
 
@@ -6409,7 +6417,7 @@ export namespace Prisma {
     description?: SortOrder
     location?: SortOrder
     date?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _relevance?: EventOrderByRelevanceInput
   }
@@ -6423,7 +6431,7 @@ export namespace Prisma {
     description?: StringFilter<"Event"> | string
     location?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
-    image?: StringFilter<"Event"> | string
+    image?: StringNullableFilter<"Event"> | string | null
     createdAt?: DateTimeFilter<"Event"> | Date | string
   }, "id">
 
@@ -6433,7 +6441,7 @@ export namespace Prisma {
     description?: SortOrder
     location?: SortOrder
     date?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
@@ -6451,7 +6459,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Event"> | string
     location?: StringWithAggregatesFilter<"Event"> | string
     date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    image?: StringWithAggregatesFilter<"Event"> | string
+    image?: StringNullableWithAggregatesFilter<"Event"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
 
@@ -6696,7 +6704,7 @@ export namespace Prisma {
     description: string
     location: string
     date: Date | string
-    image: string
+    image?: string | null
     createdAt?: Date | string
   }
 
@@ -6706,7 +6714,7 @@ export namespace Prisma {
     description: string
     location: string
     date: Date | string
-    image: string
+    image?: string | null
     createdAt?: Date | string
   }
 
@@ -6715,7 +6723,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6725,7 +6733,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6735,7 +6743,7 @@ export namespace Prisma {
     description: string
     location: string
     date: Date | string
-    image: string
+    image?: string | null
     createdAt?: Date | string
   }
 
@@ -6744,7 +6752,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6754,7 +6762,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7050,6 +7058,26 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type EventOrderByRelevanceInput = {
     fields: EventOrderByRelevanceFieldEnum | EventOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -7092,6 +7120,24 @@ export namespace Prisma {
 
   export type EventSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type ArticleCreateNestedManyWithoutAuthorInput = {
@@ -7172,6 +7218,10 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutArticlesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutArticlesInput, UserUpdateWithoutArticlesInput>, UserUncheckedUpdateWithoutArticlesInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7284,6 +7334,50 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type ArticleCreateWithoutAuthorInput = {

@@ -59,6 +59,6 @@ model Event {
   description String
   location    String
   date        DateTime
-  image       String
+  image       String?
   createdAt   DateTime @default(now())
 }

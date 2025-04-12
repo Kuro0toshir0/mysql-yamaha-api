@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // Menyajikan file statis menggunakan express.static()
   app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-
+  app.enableCors(); 
   await app.listen(4000);
 }
 bootstrap();
