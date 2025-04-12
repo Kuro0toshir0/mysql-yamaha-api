@@ -1,26 +1,58 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticleService {
-  create(createArticleDto: CreateArticleDto) {
-    return 'This action adds a new article';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createArticleDto: CreateArticleDto) {
+    return this.prisma.article.create({
+      data: createArticleDto,
+    });
   }
 
-  findAll() {
-    return `This action returns all article`;
+  async findAll() {
+    return this.prisma.article.findMany({
+      include: {
+        author: true,
+      },
+      orderBy: {
+        publishedAt: 'desc',
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} article`;
+  async findOne(id: number) {
+    const article = await this.prisma.article.findUnique({
+      where: { id },
+      include: {
+        author: true,
+      },
+    });
+
+    if (!article) {
+      throw new NotFoundException('Article not found');
+    }
+
+    return article;
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+  async update(id: number, updateArticleDto: UpdateArticleDto) {
+    await this.findOne(id); // check if article exists
+
+    return this.prisma.article.update({
+      where: { id },
+      data: updateArticleDto,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} article`;
+  async remove(id: number) {
+    await this.findOne(id); // check if article exists
+
+    return this.prisma.article.delete({
+      where: { id },
+    });
   }
 }

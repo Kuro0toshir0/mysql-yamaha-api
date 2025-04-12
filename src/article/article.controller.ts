@@ -1,34 +1,42 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ArticleService } from './article.service';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import * as path from 'path';
+import { Request } from 'express';
+import { Put } from '@nestjs/common';
 
-@Controller('article')
+@Controller('Article')
 export class ArticleController {
-  constructor(private readonly articleService: ArticleService) {}
+  constructor(private readonly Articleservice: ArticleService) {}
 
   @Post()
-  create(@Body() createArticleDto: CreateArticleDto) {
-    return this.articleService.create(createArticleDto);
+  @UseInterceptors(FileInterceptor('imageUrl'))  // Menangani file upload dengan Multer
+  create(@Body() createArticleDto: CreateArticleDto, @UploadedFile() file: Express.Multer.File) {
+    if (file) {
+      createArticleDto.thumbnail = path.join('uploads', file.filename);  // Menyimpan path file di DB
+    }
+    return this.Articleservice.create(createArticleDto);
   }
 
   @Get()
   findAll() {
-    return this.articleService.findAll();
+    return this.Articleservice.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.articleService.findOne(+id);
+    return this.Articleservice.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
-    return this.articleService.update(+id, updateArticleDto);
-  }
+  @Put(':id')
+    update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
+      return this.Articleservice.update(+id, updateArticleDto);
+    }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.articleService.remove(+id);
+    return this.Articleservice.remove(+id);
   }
 }

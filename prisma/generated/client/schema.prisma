@@ -22,7 +22,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  articles Artikel[]
+  articles Article[]
 }
 
 model Product {
@@ -35,7 +35,7 @@ model Product {
   updatedAt   DateTime @updatedAt
 }
 
-model Artikel {
+model Article {
   id          Int      @id @default(autoincrement())
   title       String
   content     String

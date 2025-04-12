@@ -1,14 +1,33 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Put,
+  UseInterceptors,
+  UploadedFile,
+} from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import * as path from 'path';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
+  @UseInterceptors(FileInterceptor('image')) // handle file upload
+  create(
+    @Body() createProductDto: CreateProductDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (file) {
+      createProductDto.image = path.join('uploads', file.filename); // simpan path image
+    }
     return this.productService.create(createProductDto);
   }
 
@@ -22,8 +41,16 @@ export class ProductController {
     return this.productService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+  @Put(':id')
+  @UseInterceptors(FileInterceptor('image'))
+  update(
+    @Param('id') id: string,
+    @Body() updateProductDto: UpdateProductDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (file) {
+      updateProductDto.image = path.join('uploads', file.filename);
+    }
     return this.productService.update(+id, updateProductDto);
   }
 

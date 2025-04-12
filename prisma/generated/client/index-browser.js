@@ -136,7 +136,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ArtikelScalarFieldEnum = {
+exports.Prisma.ArticleScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
@@ -179,7 +179,7 @@ exports.Prisma.ProductOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
-exports.Prisma.ArtikelOrderByRelevanceFieldEnum = {
+exports.Prisma.ArticleOrderByRelevanceFieldEnum = {
   title: 'title',
   content: 'content',
   thumbnail: 'thumbnail'
@@ -201,7 +201,7 @@ exports.Prisma.EventOrderByRelevanceFieldEnum = {
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
-  Artikel: 'Artikel',
+  Article: 'Article',
   Gallery: 'Gallery',
   Event: 'Event'
 };

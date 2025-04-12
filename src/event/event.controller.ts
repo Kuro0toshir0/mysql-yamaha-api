@@ -1,34 +1,52 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { EventService } from './event.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import * as path from 'path';
+import { Put } from '@nestjs/common';
+import { Request } from 'express';
 
-@Controller('event')
+@Controller('Event')
 export class EventController {
-  constructor(private readonly eventService: EventService) {}
+  constructor(private readonly eventservice: EventService) { }
 
   @Post()
-  create(@Body() createEventDto: CreateEventDto) {
-    return this.eventService.create(createEventDto);
+  @UseInterceptors(FileInterceptor('imageUrl'))  // Menangani file upload dengan Multer
+  create(@Body() createEventDto: CreateEventDto, @UploadedFile() file: Express.Multer.File) {
+    if (file) {
+      createEventDto.image = path.join('uploads', file.filename);  // Menyimpan path file di DB
+    }
+    return this.eventservice.create(createEventDto);
   }
 
   @Get()
   findAll() {
-    return this.eventService.findAll();
+    return this.eventservice.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.eventService.findOne(+id);
+    return this.eventservice.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    return this.eventService.update(+id, updateEventDto);
+
+  @Put(':id')
+  @UseInterceptors(FileInterceptor('imageUrl'))
+  update(
+    @Param('id') id: string,
+    @Body() updateEventDto: UpdateEventDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (file) {
+      updateEventDto.image = `uploads/${file.filename}`;
+    }
+    return this.eventservice.update(+id, updateEventDto);
   }
+
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.eventService.remove(+id);
+    return this.eventservice.remove(+id);
   }
 }

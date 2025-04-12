@@ -24,10 +24,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Product = $Result.DefaultSelection<Prisma.$ProductPayload>
 /**
- * Model Artikel
+ * Model Article
  * 
  */
-export type Artikel = $Result.DefaultSelection<Prisma.$ArtikelPayload>
+export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
 /**
  * Model Gallery
  * 
@@ -185,14 +185,14 @@ export class PrismaClient<
   get product(): Prisma.ProductDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.artikel`: Exposes CRUD operations for the **Artikel** model.
+   * `prisma.article`: Exposes CRUD operations for the **Article** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Artikels
-    * const artikels = await prisma.artikel.findMany()
+    * // Fetch zero or more Articles
+    * const articles = await prisma.article.findMany()
     * ```
     */
-  get artikel(): Prisma.ArtikelDelegate<ExtArgs, ClientOptions>;
+  get article(): Prisma.ArticleDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.gallery`: Exposes CRUD operations for the **Gallery** model.
@@ -655,7 +655,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Product: 'Product',
-    Artikel: 'Artikel',
+    Article: 'Article',
     Gallery: 'Gallery',
     Event: 'Event'
   };
@@ -676,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "product" | "artikel" | "gallery" | "event"
+      modelProps: "user" | "product" | "article" | "gallery" | "event"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -812,69 +812,69 @@ export namespace Prisma {
           }
         }
       }
-      Artikel: {
-        payload: Prisma.$ArtikelPayload<ExtArgs>
-        fields: Prisma.ArtikelFieldRefs
+      Article: {
+        payload: Prisma.$ArticlePayload<ExtArgs>
+        fields: Prisma.ArticleFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ArtikelFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload> | null
+            args: Prisma.ArticleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ArtikelFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           findFirst: {
-            args: Prisma.ArtikelFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload> | null
+            args: Prisma.ArticleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ArtikelFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           findMany: {
-            args: Prisma.ArtikelFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>[]
+            args: Prisma.ArticleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>[]
           }
           create: {
-            args: Prisma.ArtikelCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           createMany: {
-            args: Prisma.ArtikelCreateManyArgs<ExtArgs>
+            args: Prisma.ArticleCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.ArtikelDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           update: {
-            args: Prisma.ArtikelUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           deleteMany: {
-            args: Prisma.ArtikelDeleteManyArgs<ExtArgs>
+            args: Prisma.ArticleDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ArtikelUpdateManyArgs<ExtArgs>
+            args: Prisma.ArticleUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.ArtikelUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ArtikelPayload>
+            args: Prisma.ArticleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
           }
           aggregate: {
-            args: Prisma.ArtikelAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateArtikel>
+            args: Prisma.ArticleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateArticle>
           }
           groupBy: {
-            args: Prisma.ArtikelGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ArtikelGroupByOutputType>[]
+            args: Prisma.ArticleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ArticleGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ArtikelCountArgs<ExtArgs>
-            result: $Utils.Optional<ArtikelCountAggregateOutputType> | number
+            args: Prisma.ArticleCountArgs<ExtArgs>
+            result: $Utils.Optional<ArticleCountAggregateOutputType> | number
           }
         }
       }
@@ -1096,7 +1096,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     product?: ProductOmit
-    artikel?: ArtikelOmit
+    article?: ArticleOmit
     gallery?: GalleryOmit
     event?: EventOmit
   }
@@ -1215,7 +1215,7 @@ export namespace Prisma {
    * UserCountOutputType without action
    */
   export type UserCountOutputTypeCountArticlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
   }
 
 
@@ -1453,7 +1453,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      articles: Prisma.$ArtikelPayload<ExtArgs>[]
+      articles: Prisma.$ArticlePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1802,7 +1802,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    articles<T extends User$articlesArgs<ExtArgs> = {}>(args?: Subset<T, User$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    articles<T extends User$articlesArgs<ExtArgs> = {}>(args?: Subset<T, User$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2185,23 +2185,23 @@ export namespace Prisma {
    */
   export type User$articlesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
-    where?: ArtikelWhereInput
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
-    cursor?: ArtikelWhereUniqueInput
+    include?: ArticleInclude<ExtArgs> | null
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    cursor?: ArticleWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
   }
 
   /**
@@ -3166,37 +3166,28 @@ export namespace Prisma {
 
 
   /**
-   * Model Artikel
+   * Model Article
    */
 
-  export type AggregateArtikel = {
-    _count: ArtikelCountAggregateOutputType | null
-    _avg: ArtikelAvgAggregateOutputType | null
-    _sum: ArtikelSumAggregateOutputType | null
-    _min: ArtikelMinAggregateOutputType | null
-    _max: ArtikelMaxAggregateOutputType | null
+  export type AggregateArticle = {
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
   }
 
-  export type ArtikelAvgAggregateOutputType = {
+  export type ArticleAvgAggregateOutputType = {
     id: number | null
     authorId: number | null
   }
 
-  export type ArtikelSumAggregateOutputType = {
+  export type ArticleSumAggregateOutputType = {
     id: number | null
     authorId: number | null
   }
 
-  export type ArtikelMinAggregateOutputType = {
-    id: number | null
-    title: string | null
-    content: string | null
-    thumbnail: string | null
-    publishedAt: Date | null
-    authorId: number | null
-  }
-
-  export type ArtikelMaxAggregateOutputType = {
+  export type ArticleMinAggregateOutputType = {
     id: number | null
     title: string | null
     content: string | null
@@ -3205,7 +3196,16 @@ export namespace Prisma {
     authorId: number | null
   }
 
-  export type ArtikelCountAggregateOutputType = {
+  export type ArticleMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    content: string | null
+    thumbnail: string | null
+    publishedAt: Date | null
+    authorId: number | null
+  }
+
+  export type ArticleCountAggregateOutputType = {
     id: number
     title: number
     content: number
@@ -3216,26 +3216,17 @@ export namespace Prisma {
   }
 
 
-  export type ArtikelAvgAggregateInputType = {
+  export type ArticleAvgAggregateInputType = {
     id?: true
     authorId?: true
   }
 
-  export type ArtikelSumAggregateInputType = {
+  export type ArticleSumAggregateInputType = {
     id?: true
     authorId?: true
   }
 
-  export type ArtikelMinAggregateInputType = {
-    id?: true
-    title?: true
-    content?: true
-    thumbnail?: true
-    publishedAt?: true
-    authorId?: true
-  }
-
-  export type ArtikelMaxAggregateInputType = {
+  export type ArticleMinAggregateInputType = {
     id?: true
     title?: true
     content?: true
@@ -3244,7 +3235,16 @@ export namespace Prisma {
     authorId?: true
   }
 
-  export type ArtikelCountAggregateInputType = {
+  export type ArticleMaxAggregateInputType = {
+    id?: true
+    title?: true
+    content?: true
+    thumbnail?: true
+    publishedAt?: true
+    authorId?: true
+  }
+
+  export type ArticleCountAggregateInputType = {
     id?: true
     title?: true
     content?: true
@@ -3254,121 +3254,121 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ArtikelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Artikel to aggregate.
+     * Filter which Article to aggregate.
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Artikels to fetch.
+     * Determine the order of Articles to fetch.
      */
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ArtikelWhereUniqueInput
+    cursor?: ArticleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Artikels from the position of the cursor.
+     * Take `±n` Articles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Artikels.
+     * Skip the first `n` Articles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Artikels
+     * Count returned Articles
     **/
-    _count?: true | ArtikelCountAggregateInputType
+    _count?: true | ArticleCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ArtikelAvgAggregateInputType
+    _avg?: ArticleAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ArtikelSumAggregateInputType
+    _sum?: ArticleSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ArtikelMinAggregateInputType
+    _min?: ArticleMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ArtikelMaxAggregateInputType
+    _max?: ArticleMaxAggregateInputType
   }
 
-  export type GetArtikelAggregateType<T extends ArtikelAggregateArgs> = {
-        [P in keyof T & keyof AggregateArtikel]: P extends '_count' | 'count'
+  export type GetArticleAggregateType<T extends ArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateArticle]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateArtikel[P]>
-      : GetScalarType<T[P], AggregateArtikel[P]>
+        : GetScalarType<T[P], AggregateArticle[P]>
+      : GetScalarType<T[P], AggregateArticle[P]>
   }
 
 
 
 
-  export type ArtikelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ArtikelWhereInput
-    orderBy?: ArtikelOrderByWithAggregationInput | ArtikelOrderByWithAggregationInput[]
-    by: ArtikelScalarFieldEnum[] | ArtikelScalarFieldEnum
-    having?: ArtikelScalarWhereWithAggregatesInput
+  export type ArticleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithAggregationInput | ArticleOrderByWithAggregationInput[]
+    by: ArticleScalarFieldEnum[] | ArticleScalarFieldEnum
+    having?: ArticleScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ArtikelCountAggregateInputType | true
-    _avg?: ArtikelAvgAggregateInputType
-    _sum?: ArtikelSumAggregateInputType
-    _min?: ArtikelMinAggregateInputType
-    _max?: ArtikelMaxAggregateInputType
+    _count?: ArticleCountAggregateInputType | true
+    _avg?: ArticleAvgAggregateInputType
+    _sum?: ArticleSumAggregateInputType
+    _min?: ArticleMinAggregateInputType
+    _max?: ArticleMaxAggregateInputType
   }
 
-  export type ArtikelGroupByOutputType = {
+  export type ArticleGroupByOutputType = {
     id: number
     title: string
     content: string
     thumbnail: string
     publishedAt: Date
     authorId: number
-    _count: ArtikelCountAggregateOutputType | null
-    _avg: ArtikelAvgAggregateOutputType | null
-    _sum: ArtikelSumAggregateOutputType | null
-    _min: ArtikelMinAggregateOutputType | null
-    _max: ArtikelMaxAggregateOutputType | null
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
   }
 
-  type GetArtikelGroupByPayload<T extends ArtikelGroupByArgs> = Prisma.PrismaPromise<
+  type GetArticleGroupByPayload<T extends ArticleGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ArtikelGroupByOutputType, T['by']> &
+      PickEnumerable<ArticleGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ArtikelGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ArticleGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ArtikelGroupByOutputType[P]>
-            : GetScalarType<T[P], ArtikelGroupByOutputType[P]>
+              : GetScalarType<T[P], ArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], ArticleGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ArtikelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     content?: boolean
@@ -3376,11 +3376,11 @@ export namespace Prisma {
     publishedAt?: boolean
     authorId?: boolean
     author?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["artikel"]>
+  }, ExtArgs["result"]["article"]>
 
 
 
-  export type ArtikelSelectScalar = {
+  export type ArticleSelectScalar = {
     id?: boolean
     title?: boolean
     content?: boolean
@@ -3389,13 +3389,13 @@ export namespace Prisma {
     authorId?: boolean
   }
 
-  export type ArtikelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "thumbnail" | "publishedAt" | "authorId", ExtArgs["result"]["artikel"]>
-  export type ArtikelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "thumbnail" | "publishedAt" | "authorId", ExtArgs["result"]["article"]>
+  export type ArticleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $ArtikelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Artikel"
+  export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Article"
     objects: {
       author: Prisma.$UserPayload<ExtArgs>
     }
@@ -3406,143 +3406,143 @@ export namespace Prisma {
       thumbnail: string
       publishedAt: Date
       authorId: number
-    }, ExtArgs["result"]["artikel"]>
+    }, ExtArgs["result"]["article"]>
     composites: {}
   }
 
-  type ArtikelGetPayload<S extends boolean | null | undefined | ArtikelDefaultArgs> = $Result.GetResult<Prisma.$ArtikelPayload, S>
+  type ArticleGetPayload<S extends boolean | null | undefined | ArticleDefaultArgs> = $Result.GetResult<Prisma.$ArticlePayload, S>
 
-  type ArtikelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ArtikelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ArtikelCountAggregateInputType | true
+  type ArticleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ArticleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ArticleCountAggregateInputType | true
     }
 
-  export interface ArtikelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Artikel'], meta: { name: 'Artikel' } }
+  export interface ArticleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Article'], meta: { name: 'Article' } }
     /**
-     * Find zero or one Artikel that matches the filter.
-     * @param {ArtikelFindUniqueArgs} args - Arguments to find a Artikel
+     * Find zero or one Article that matches the filter.
+     * @param {ArticleFindUniqueArgs} args - Arguments to find a Article
      * @example
-     * // Get one Artikel
-     * const artikel = await prisma.artikel.findUnique({
+     * // Get one Article
+     * const article = await prisma.article.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ArtikelFindUniqueArgs>(args: SelectSubset<T, ArtikelFindUniqueArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ArticleFindUniqueArgs>(args: SelectSubset<T, ArticleFindUniqueArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Artikel that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Article that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ArtikelFindUniqueOrThrowArgs} args - Arguments to find a Artikel
+     * @param {ArticleFindUniqueOrThrowArgs} args - Arguments to find a Article
      * @example
-     * // Get one Artikel
-     * const artikel = await prisma.artikel.findUniqueOrThrow({
+     * // Get one Article
+     * const article = await prisma.article.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ArtikelFindUniqueOrThrowArgs>(args: SelectSubset<T, ArtikelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ArticleFindUniqueOrThrowArgs>(args: SelectSubset<T, ArticleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Artikel that matches the filter.
+     * Find the first Article that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelFindFirstArgs} args - Arguments to find a Artikel
+     * @param {ArticleFindFirstArgs} args - Arguments to find a Article
      * @example
-     * // Get one Artikel
-     * const artikel = await prisma.artikel.findFirst({
+     * // Get one Article
+     * const article = await prisma.article.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ArtikelFindFirstArgs>(args?: SelectSubset<T, ArtikelFindFirstArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ArticleFindFirstArgs>(args?: SelectSubset<T, ArticleFindFirstArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Artikel that matches the filter or
+     * Find the first Article that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelFindFirstOrThrowArgs} args - Arguments to find a Artikel
+     * @param {ArticleFindFirstOrThrowArgs} args - Arguments to find a Article
      * @example
-     * // Get one Artikel
-     * const artikel = await prisma.artikel.findFirstOrThrow({
+     * // Get one Article
+     * const article = await prisma.article.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ArtikelFindFirstOrThrowArgs>(args?: SelectSubset<T, ArtikelFindFirstOrThrowArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ArticleFindFirstOrThrowArgs>(args?: SelectSubset<T, ArticleFindFirstOrThrowArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Artikels that matches the filter.
+     * Find zero or more Articles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ArticleFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Artikels
-     * const artikels = await prisma.artikel.findMany()
+     * // Get all Articles
+     * const articles = await prisma.article.findMany()
      * 
-     * // Get first 10 Artikels
-     * const artikels = await prisma.artikel.findMany({ take: 10 })
+     * // Get first 10 Articles
+     * const articles = await prisma.article.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const artikelWithIdOnly = await prisma.artikel.findMany({ select: { id: true } })
+     * const articleWithIdOnly = await prisma.article.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ArtikelFindManyArgs>(args?: SelectSubset<T, ArtikelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ArticleFindManyArgs>(args?: SelectSubset<T, ArticleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Artikel.
-     * @param {ArtikelCreateArgs} args - Arguments to create a Artikel.
+     * Create a Article.
+     * @param {ArticleCreateArgs} args - Arguments to create a Article.
      * @example
-     * // Create one Artikel
-     * const Artikel = await prisma.artikel.create({
+     * // Create one Article
+     * const Article = await prisma.article.create({
      *   data: {
-     *     // ... data to create a Artikel
+     *     // ... data to create a Article
      *   }
      * })
      * 
      */
-    create<T extends ArtikelCreateArgs>(args: SelectSubset<T, ArtikelCreateArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ArticleCreateArgs>(args: SelectSubset<T, ArticleCreateArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Artikels.
-     * @param {ArtikelCreateManyArgs} args - Arguments to create many Artikels.
+     * Create many Articles.
+     * @param {ArticleCreateManyArgs} args - Arguments to create many Articles.
      * @example
-     * // Create many Artikels
-     * const artikel = await prisma.artikel.createMany({
+     * // Create many Articles
+     * const article = await prisma.article.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ArtikelCreateManyArgs>(args?: SelectSubset<T, ArtikelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ArticleCreateManyArgs>(args?: SelectSubset<T, ArticleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Artikel.
-     * @param {ArtikelDeleteArgs} args - Arguments to delete one Artikel.
+     * Delete a Article.
+     * @param {ArticleDeleteArgs} args - Arguments to delete one Article.
      * @example
-     * // Delete one Artikel
-     * const Artikel = await prisma.artikel.delete({
+     * // Delete one Article
+     * const Article = await prisma.article.delete({
      *   where: {
-     *     // ... filter to delete one Artikel
+     *     // ... filter to delete one Article
      *   }
      * })
      * 
      */
-    delete<T extends ArtikelDeleteArgs>(args: SelectSubset<T, ArtikelDeleteArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ArticleDeleteArgs>(args: SelectSubset<T, ArticleDeleteArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Artikel.
-     * @param {ArtikelUpdateArgs} args - Arguments to update one Artikel.
+     * Update one Article.
+     * @param {ArticleUpdateArgs} args - Arguments to update one Article.
      * @example
-     * // Update one Artikel
-     * const artikel = await prisma.artikel.update({
+     * // Update one Article
+     * const article = await prisma.article.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3552,30 +3552,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ArtikelUpdateArgs>(args: SelectSubset<T, ArtikelUpdateArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ArticleUpdateArgs>(args: SelectSubset<T, ArticleUpdateArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Artikels.
-     * @param {ArtikelDeleteManyArgs} args - Arguments to filter Artikels to delete.
+     * Delete zero or more Articles.
+     * @param {ArticleDeleteManyArgs} args - Arguments to filter Articles to delete.
      * @example
-     * // Delete a few Artikels
-     * const { count } = await prisma.artikel.deleteMany({
+     * // Delete a few Articles
+     * const { count } = await prisma.article.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ArtikelDeleteManyArgs>(args?: SelectSubset<T, ArtikelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ArticleDeleteManyArgs>(args?: SelectSubset<T, ArticleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Artikels.
+     * Update zero or more Articles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ArticleUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Artikels
-     * const artikel = await prisma.artikel.updateMany({
+     * // Update many Articles
+     * const article = await prisma.article.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3585,56 +3585,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ArtikelUpdateManyArgs>(args: SelectSubset<T, ArtikelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ArticleUpdateManyArgs>(args: SelectSubset<T, ArticleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Artikel.
-     * @param {ArtikelUpsertArgs} args - Arguments to update or create a Artikel.
+     * Create or update one Article.
+     * @param {ArticleUpsertArgs} args - Arguments to update or create a Article.
      * @example
-     * // Update or create a Artikel
-     * const artikel = await prisma.artikel.upsert({
+     * // Update or create a Article
+     * const article = await prisma.article.upsert({
      *   create: {
-     *     // ... data to create a Artikel
+     *     // ... data to create a Article
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Artikel we want to update
+     *     // ... the filter for the Article we want to update
      *   }
      * })
      */
-    upsert<T extends ArtikelUpsertArgs>(args: SelectSubset<T, ArtikelUpsertArgs<ExtArgs>>): Prisma__ArtikelClient<$Result.GetResult<Prisma.$ArtikelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ArticleUpsertArgs>(args: SelectSubset<T, ArticleUpsertArgs<ExtArgs>>): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Artikels.
+     * Count the number of Articles.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelCountArgs} args - Arguments to filter Artikels to count.
+     * @param {ArticleCountArgs} args - Arguments to filter Articles to count.
      * @example
-     * // Count the number of Artikels
-     * const count = await prisma.artikel.count({
+     * // Count the number of Articles
+     * const count = await prisma.article.count({
      *   where: {
-     *     // ... the filter for the Artikels we want to count
+     *     // ... the filter for the Articles we want to count
      *   }
      * })
     **/
-    count<T extends ArtikelCountArgs>(
-      args?: Subset<T, ArtikelCountArgs>,
+    count<T extends ArticleCountArgs>(
+      args?: Subset<T, ArticleCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ArtikelCountAggregateOutputType>
+          : GetScalarType<T['select'], ArticleCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Artikel.
+     * Allows you to perform aggregations operations on a Article.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3654,13 +3654,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ArtikelAggregateArgs>(args: Subset<T, ArtikelAggregateArgs>): Prisma.PrismaPromise<GetArtikelAggregateType<T>>
+    aggregate<T extends ArticleAggregateArgs>(args: Subset<T, ArticleAggregateArgs>): Prisma.PrismaPromise<GetArticleAggregateType<T>>
 
     /**
-     * Group by Artikel.
+     * Group by Article.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ArtikelGroupByArgs} args - Group by arguments.
+     * @param {ArticleGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3675,14 +3675,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ArtikelGroupByArgs,
+      T extends ArticleGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ArtikelGroupByArgs['orderBy'] }
-        : { orderBy?: ArtikelGroupByArgs['orderBy'] },
+        ? { orderBy: ArticleGroupByArgs['orderBy'] }
+        : { orderBy?: ArticleGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3731,20 +3731,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ArtikelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArtikelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArticleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Artikel model
+   * Fields of the Article model
    */
-  readonly fields: ArtikelFieldRefs;
+  readonly fields: ArticleFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Artikel.
+   * The delegate class that acts as a "Promise-like" for Article.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ArtikelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -3773,373 +3773,373 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Artikel model
+   * Fields of the Article model
    */
-  interface ArtikelFieldRefs {
-    readonly id: FieldRef<"Artikel", 'Int'>
-    readonly title: FieldRef<"Artikel", 'String'>
-    readonly content: FieldRef<"Artikel", 'String'>
-    readonly thumbnail: FieldRef<"Artikel", 'String'>
-    readonly publishedAt: FieldRef<"Artikel", 'DateTime'>
-    readonly authorId: FieldRef<"Artikel", 'Int'>
+  interface ArticleFieldRefs {
+    readonly id: FieldRef<"Article", 'Int'>
+    readonly title: FieldRef<"Article", 'String'>
+    readonly content: FieldRef<"Article", 'String'>
+    readonly thumbnail: FieldRef<"Article", 'String'>
+    readonly publishedAt: FieldRef<"Article", 'DateTime'>
+    readonly authorId: FieldRef<"Article", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Artikel findUnique
+   * Article findUnique
    */
-  export type ArtikelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter, which Artikel to fetch.
+     * Filter, which Article to fetch.
      */
-    where: ArtikelWhereUniqueInput
+    where: ArticleWhereUniqueInput
   }
 
   /**
-   * Artikel findUniqueOrThrow
+   * Article findUniqueOrThrow
    */
-  export type ArtikelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter, which Artikel to fetch.
+     * Filter, which Article to fetch.
      */
-    where: ArtikelWhereUniqueInput
+    where: ArticleWhereUniqueInput
   }
 
   /**
-   * Artikel findFirst
+   * Article findFirst
    */
-  export type ArtikelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter, which Artikel to fetch.
+     * Filter, which Article to fetch.
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Artikels to fetch.
+     * Determine the order of Articles to fetch.
      */
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Artikels.
+     * Sets the position for searching for Articles.
      */
-    cursor?: ArtikelWhereUniqueInput
+    cursor?: ArticleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Artikels from the position of the cursor.
+     * Take `±n` Articles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Artikels.
+     * Skip the first `n` Articles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Artikels.
+     * Filter by unique combinations of Articles.
      */
-    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
   }
 
   /**
-   * Artikel findFirstOrThrow
+   * Article findFirstOrThrow
    */
-  export type ArtikelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter, which Artikel to fetch.
+     * Filter, which Article to fetch.
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Artikels to fetch.
+     * Determine the order of Articles to fetch.
      */
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Artikels.
+     * Sets the position for searching for Articles.
      */
-    cursor?: ArtikelWhereUniqueInput
+    cursor?: ArticleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Artikels from the position of the cursor.
+     * Take `±n` Articles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Artikels.
+     * Skip the first `n` Articles.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Artikels.
+     * Filter by unique combinations of Articles.
      */
-    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
   }
 
   /**
-   * Artikel findMany
+   * Article findMany
    */
-  export type ArtikelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter, which Artikels to fetch.
+     * Filter, which Articles to fetch.
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Artikels to fetch.
+     * Determine the order of Articles to fetch.
      */
-    orderBy?: ArtikelOrderByWithRelationInput | ArtikelOrderByWithRelationInput[]
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Artikels.
+     * Sets the position for listing Articles.
      */
-    cursor?: ArtikelWhereUniqueInput
+    cursor?: ArticleWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Artikels from the position of the cursor.
+     * Take `±n` Articles from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Artikels.
+     * Skip the first `n` Articles.
      */
     skip?: number
-    distinct?: ArtikelScalarFieldEnum | ArtikelScalarFieldEnum[]
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
   }
 
   /**
-   * Artikel create
+   * Article create
    */
-  export type ArtikelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * The data needed to create a Artikel.
+     * The data needed to create a Article.
      */
-    data: XOR<ArtikelCreateInput, ArtikelUncheckedCreateInput>
+    data: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
   }
 
   /**
-   * Artikel createMany
+   * Article createMany
    */
-  export type ArtikelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Artikels.
+     * The data used to create many Articles.
      */
-    data: ArtikelCreateManyInput | ArtikelCreateManyInput[]
+    data: ArticleCreateManyInput | ArticleCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Artikel update
+   * Article update
    */
-  export type ArtikelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * The data needed to update a Artikel.
+     * The data needed to update a Article.
      */
-    data: XOR<ArtikelUpdateInput, ArtikelUncheckedUpdateInput>
+    data: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
     /**
-     * Choose, which Artikel to update.
+     * Choose, which Article to update.
      */
-    where: ArtikelWhereUniqueInput
+    where: ArticleWhereUniqueInput
   }
 
   /**
-   * Artikel updateMany
+   * Article updateMany
    */
-  export type ArtikelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Artikels.
+     * The data used to update Articles.
      */
-    data: XOR<ArtikelUpdateManyMutationInput, ArtikelUncheckedUpdateManyInput>
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyInput>
     /**
-     * Filter which Artikels to update
+     * Filter which Articles to update
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
-     * Limit how many Artikels to update.
+     * Limit how many Articles to update.
      */
     limit?: number
   }
 
   /**
-   * Artikel upsert
+   * Article upsert
    */
-  export type ArtikelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * The filter to search for the Artikel to update in case it exists.
+     * The filter to search for the Article to update in case it exists.
      */
-    where: ArtikelWhereUniqueInput
+    where: ArticleWhereUniqueInput
     /**
-     * In case the Artikel found by the `where` argument doesn't exist, create a new Artikel with this data.
+     * In case the Article found by the `where` argument doesn't exist, create a new Article with this data.
      */
-    create: XOR<ArtikelCreateInput, ArtikelUncheckedCreateInput>
+    create: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
     /**
-     * In case the Artikel was found with the provided `where` argument, update it with this data.
+     * In case the Article was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ArtikelUpdateInput, ArtikelUncheckedUpdateInput>
+    update: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
   }
 
   /**
-   * Artikel delete
+   * Article delete
    */
-  export type ArtikelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
     /**
-     * Filter which Artikel to delete.
+     * Filter which Article to delete.
      */
-    where: ArtikelWhereUniqueInput
+    where: ArticleWhereUniqueInput
   }
 
   /**
-   * Artikel deleteMany
+   * Article deleteMany
    */
-  export type ArtikelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Artikels to delete
+     * Filter which Articles to delete
      */
-    where?: ArtikelWhereInput
+    where?: ArticleWhereInput
     /**
-     * Limit how many Artikels to delete.
+     * Limit how many Articles to delete.
      */
     limit?: number
   }
 
   /**
-   * Artikel without action
+   * Article without action
    */
-  export type ArtikelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ArticleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Artikel
+     * Select specific fields to fetch from the Article
      */
-    select?: ArtikelSelect<ExtArgs> | null
+    select?: ArticleSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Artikel
+     * Omit specific fields from the Article
      */
-    omit?: ArtikelOmit<ExtArgs> | null
+    omit?: ArticleOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ArtikelInclude<ExtArgs> | null
+    include?: ArticleInclude<ExtArgs> | null
   }
 
 
@@ -6025,7 +6025,7 @@ export namespace Prisma {
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
 
 
-  export const ArtikelScalarFieldEnum: {
+  export const ArticleScalarFieldEnum: {
     id: 'id',
     title: 'title',
     content: 'content',
@@ -6034,7 +6034,7 @@ export namespace Prisma {
     authorId: 'authorId'
   };
 
-  export type ArtikelScalarFieldEnum = (typeof ArtikelScalarFieldEnum)[keyof typeof ArtikelScalarFieldEnum]
+  export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
 
 
   export const GalleryScalarFieldEnum: {
@@ -6086,13 +6086,13 @@ export namespace Prisma {
   export type ProductOrderByRelevanceFieldEnum = (typeof ProductOrderByRelevanceFieldEnum)[keyof typeof ProductOrderByRelevanceFieldEnum]
 
 
-  export const ArtikelOrderByRelevanceFieldEnum: {
+  export const ArticleOrderByRelevanceFieldEnum: {
     title: 'title',
     content: 'content',
     thumbnail: 'thumbnail'
   };
 
-  export type ArtikelOrderByRelevanceFieldEnum = (typeof ArtikelOrderByRelevanceFieldEnum)[keyof typeof ArtikelOrderByRelevanceFieldEnum]
+  export type ArticleOrderByRelevanceFieldEnum = (typeof ArticleOrderByRelevanceFieldEnum)[keyof typeof ArticleOrderByRelevanceFieldEnum]
 
 
   export const GalleryOrderByRelevanceFieldEnum: {
@@ -6159,7 +6159,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    articles?: ArtikelListRelationFilter
+    articles?: ArticleListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -6169,7 +6169,7 @@ export namespace Prisma {
     password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    articles?: ArtikelOrderByRelationAggregateInput
+    articles?: ArticleOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -6183,7 +6183,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    articles?: ArtikelListRelationFilter
+    articles?: ArticleListRelationFilter
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -6277,20 +6277,20 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
   }
 
-  export type ArtikelWhereInput = {
-    AND?: ArtikelWhereInput | ArtikelWhereInput[]
-    OR?: ArtikelWhereInput[]
-    NOT?: ArtikelWhereInput | ArtikelWhereInput[]
-    id?: IntFilter<"Artikel"> | number
-    title?: StringFilter<"Artikel"> | string
-    content?: StringFilter<"Artikel"> | string
-    thumbnail?: StringFilter<"Artikel"> | string
-    publishedAt?: DateTimeFilter<"Artikel"> | Date | string
-    authorId?: IntFilter<"Artikel"> | number
+  export type ArticleWhereInput = {
+    AND?: ArticleWhereInput | ArticleWhereInput[]
+    OR?: ArticleWhereInput[]
+    NOT?: ArticleWhereInput | ArticleWhereInput[]
+    id?: IntFilter<"Article"> | number
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    thumbnail?: StringFilter<"Article"> | string
+    publishedAt?: DateTimeFilter<"Article"> | Date | string
+    authorId?: IntFilter<"Article"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type ArtikelOrderByWithRelationInput = {
+  export type ArticleOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -6298,46 +6298,46 @@ export namespace Prisma {
     publishedAt?: SortOrder
     authorId?: SortOrder
     author?: UserOrderByWithRelationInput
-    _relevance?: ArtikelOrderByRelevanceInput
+    _relevance?: ArticleOrderByRelevanceInput
   }
 
-  export type ArtikelWhereUniqueInput = Prisma.AtLeast<{
+  export type ArticleWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ArtikelWhereInput | ArtikelWhereInput[]
-    OR?: ArtikelWhereInput[]
-    NOT?: ArtikelWhereInput | ArtikelWhereInput[]
-    title?: StringFilter<"Artikel"> | string
-    content?: StringFilter<"Artikel"> | string
-    thumbnail?: StringFilter<"Artikel"> | string
-    publishedAt?: DateTimeFilter<"Artikel"> | Date | string
-    authorId?: IntFilter<"Artikel"> | number
+    AND?: ArticleWhereInput | ArticleWhereInput[]
+    OR?: ArticleWhereInput[]
+    NOT?: ArticleWhereInput | ArticleWhereInput[]
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    thumbnail?: StringFilter<"Article"> | string
+    publishedAt?: DateTimeFilter<"Article"> | Date | string
+    authorId?: IntFilter<"Article"> | number
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type ArtikelOrderByWithAggregationInput = {
+  export type ArticleOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
     thumbnail?: SortOrder
     publishedAt?: SortOrder
     authorId?: SortOrder
-    _count?: ArtikelCountOrderByAggregateInput
-    _avg?: ArtikelAvgOrderByAggregateInput
-    _max?: ArtikelMaxOrderByAggregateInput
-    _min?: ArtikelMinOrderByAggregateInput
-    _sum?: ArtikelSumOrderByAggregateInput
+    _count?: ArticleCountOrderByAggregateInput
+    _avg?: ArticleAvgOrderByAggregateInput
+    _max?: ArticleMaxOrderByAggregateInput
+    _min?: ArticleMinOrderByAggregateInput
+    _sum?: ArticleSumOrderByAggregateInput
   }
 
-  export type ArtikelScalarWhereWithAggregatesInput = {
-    AND?: ArtikelScalarWhereWithAggregatesInput | ArtikelScalarWhereWithAggregatesInput[]
-    OR?: ArtikelScalarWhereWithAggregatesInput[]
-    NOT?: ArtikelScalarWhereWithAggregatesInput | ArtikelScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Artikel"> | number
-    title?: StringWithAggregatesFilter<"Artikel"> | string
-    content?: StringWithAggregatesFilter<"Artikel"> | string
-    thumbnail?: StringWithAggregatesFilter<"Artikel"> | string
-    publishedAt?: DateTimeWithAggregatesFilter<"Artikel"> | Date | string
-    authorId?: IntWithAggregatesFilter<"Artikel"> | number
+  export type ArticleScalarWhereWithAggregatesInput = {
+    AND?: ArticleScalarWhereWithAggregatesInput | ArticleScalarWhereWithAggregatesInput[]
+    OR?: ArticleScalarWhereWithAggregatesInput[]
+    NOT?: ArticleScalarWhereWithAggregatesInput | ArticleScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Article"> | number
+    title?: StringWithAggregatesFilter<"Article"> | string
+    content?: StringWithAggregatesFilter<"Article"> | string
+    thumbnail?: StringWithAggregatesFilter<"Article"> | string
+    publishedAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
+    authorId?: IntWithAggregatesFilter<"Article"> | number
   }
 
   export type GalleryWhereInput = {
@@ -6461,7 +6461,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    articles?: ArtikelCreateNestedManyWithoutAuthorInput
+    articles?: ArticleCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6471,7 +6471,7 @@ export namespace Prisma {
     password: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    articles?: ArtikelUncheckedCreateNestedManyWithoutAuthorInput
+    articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUpdateInput = {
@@ -6480,7 +6480,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    articles?: ArtikelUpdateManyWithoutAuthorNestedInput
+    articles?: ArticleUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6490,7 +6490,7 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    articles?: ArtikelUncheckedUpdateManyWithoutAuthorNestedInput
+    articles?: ArticleUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6586,7 +6586,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ArtikelCreateInput = {
+  export type ArticleCreateInput = {
     title: string
     content: string
     thumbnail: string
@@ -6594,7 +6594,7 @@ export namespace Prisma {
     author: UserCreateNestedOneWithoutArticlesInput
   }
 
-  export type ArtikelUncheckedCreateInput = {
+  export type ArticleUncheckedCreateInput = {
     id?: number
     title: string
     content: string
@@ -6603,7 +6603,7 @@ export namespace Prisma {
     authorId: number
   }
 
-  export type ArtikelUpdateInput = {
+  export type ArticleUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
@@ -6611,7 +6611,7 @@ export namespace Prisma {
     author?: UserUpdateOneRequiredWithoutArticlesNestedInput
   }
 
-  export type ArtikelUncheckedUpdateInput = {
+  export type ArticleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -6620,7 +6620,7 @@ export namespace Prisma {
     authorId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ArtikelCreateManyInput = {
+  export type ArticleCreateManyInput = {
     id?: number
     title: string
     content: string
@@ -6629,14 +6629,14 @@ export namespace Prisma {
     authorId: number
   }
 
-  export type ArtikelUpdateManyMutationInput = {
+  export type ArticleUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ArtikelUncheckedUpdateManyInput = {
+  export type ArticleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -6795,13 +6795,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type ArtikelListRelationFilter = {
-    every?: ArtikelWhereInput
-    some?: ArtikelWhereInput
-    none?: ArtikelWhereInput
+  export type ArticleListRelationFilter = {
+    every?: ArticleWhereInput
+    some?: ArticleWhereInput
+    none?: ArticleWhereInput
   }
 
-  export type ArtikelOrderByRelationAggregateInput = {
+  export type ArticleOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6972,13 +6972,13 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type ArtikelOrderByRelevanceInput = {
-    fields: ArtikelOrderByRelevanceFieldEnum | ArtikelOrderByRelevanceFieldEnum[]
+  export type ArticleOrderByRelevanceInput = {
+    fields: ArticleOrderByRelevanceFieldEnum | ArticleOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type ArtikelCountOrderByAggregateInput = {
+  export type ArticleCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -6987,21 +6987,12 @@ export namespace Prisma {
     authorId?: SortOrder
   }
 
-  export type ArtikelAvgOrderByAggregateInput = {
+  export type ArticleAvgOrderByAggregateInput = {
     id?: SortOrder
     authorId?: SortOrder
   }
 
-  export type ArtikelMaxOrderByAggregateInput = {
-    id?: SortOrder
-    title?: SortOrder
-    content?: SortOrder
-    thumbnail?: SortOrder
-    publishedAt?: SortOrder
-    authorId?: SortOrder
-  }
-
-  export type ArtikelMinOrderByAggregateInput = {
+  export type ArticleMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -7010,7 +7001,16 @@ export namespace Prisma {
     authorId?: SortOrder
   }
 
-  export type ArtikelSumOrderByAggregateInput = {
+  export type ArticleMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    thumbnail?: SortOrder
+    publishedAt?: SortOrder
+    authorId?: SortOrder
+  }
+
+  export type ArticleSumOrderByAggregateInput = {
     id?: SortOrder
     authorId?: SortOrder
   }
@@ -7094,18 +7094,18 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type ArtikelCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput> | ArtikelCreateWithoutAuthorInput[] | ArtikelUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAuthorInput | ArtikelCreateOrConnectWithoutAuthorInput[]
-    createMany?: ArtikelCreateManyAuthorInputEnvelope
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+  export type ArticleCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
   }
 
-  export type ArtikelUncheckedCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput> | ArtikelCreateWithoutAuthorInput[] | ArtikelUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAuthorInput | ArtikelCreateOrConnectWithoutAuthorInput[]
-    createMany?: ArtikelCreateManyAuthorInputEnvelope
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
+  export type ArticleUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7116,18 +7116,18 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type ArtikelUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput> | ArtikelCreateWithoutAuthorInput[] | ArtikelUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAuthorInput | ArtikelCreateOrConnectWithoutAuthorInput[]
-    upsert?: ArtikelUpsertWithWhereUniqueWithoutAuthorInput | ArtikelUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: ArtikelCreateManyAuthorInputEnvelope
-    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    update?: ArtikelUpdateWithWhereUniqueWithoutAuthorInput | ArtikelUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: ArtikelUpdateManyWithWhereWithoutAuthorInput | ArtikelUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
+  export type ArticleUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutAuthorInput | ArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutAuthorInput | ArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutAuthorInput | ArticleUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7138,18 +7138,18 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ArtikelUncheckedUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput> | ArtikelCreateWithoutAuthorInput[] | ArtikelUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: ArtikelCreateOrConnectWithoutAuthorInput | ArtikelCreateOrConnectWithoutAuthorInput[]
-    upsert?: ArtikelUpsertWithWhereUniqueWithoutAuthorInput | ArtikelUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: ArtikelCreateManyAuthorInputEnvelope
-    set?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    disconnect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    delete?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    connect?: ArtikelWhereUniqueInput | ArtikelWhereUniqueInput[]
-    update?: ArtikelUpdateWithWhereUniqueWithoutAuthorInput | ArtikelUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: ArtikelUpdateManyWithWhereWithoutAuthorInput | ArtikelUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
+  export type ArticleUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput> | ArticleCreateWithoutAuthorInput[] | ArticleUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: ArticleCreateOrConnectWithoutAuthorInput | ArticleCreateOrConnectWithoutAuthorInput[]
+    upsert?: ArticleUpsertWithWhereUniqueWithoutAuthorInput | ArticleUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: ArticleCreateManyAuthorInputEnvelope
+    set?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    disconnect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    delete?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    connect?: ArticleWhereUniqueInput | ArticleWhereUniqueInput[]
+    update?: ArticleUpdateWithWhereUniqueWithoutAuthorInput | ArticleUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: ArticleUpdateManyWithWhereWithoutAuthorInput | ArticleUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -7286,14 +7286,14 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type ArtikelCreateWithoutAuthorInput = {
+  export type ArticleCreateWithoutAuthorInput = {
     title: string
     content: string
     thumbnail: string
     publishedAt?: Date | string
   }
 
-  export type ArtikelUncheckedCreateWithoutAuthorInput = {
+  export type ArticleUncheckedCreateWithoutAuthorInput = {
     id?: number
     title: string
     content: string
@@ -7301,42 +7301,42 @@ export namespace Prisma {
     publishedAt?: Date | string
   }
 
-  export type ArtikelCreateOrConnectWithoutAuthorInput = {
-    where: ArtikelWhereUniqueInput
-    create: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput>
+  export type ArticleCreateOrConnectWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    create: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput>
   }
 
-  export type ArtikelCreateManyAuthorInputEnvelope = {
-    data: ArtikelCreateManyAuthorInput | ArtikelCreateManyAuthorInput[]
+  export type ArticleCreateManyAuthorInputEnvelope = {
+    data: ArticleCreateManyAuthorInput | ArticleCreateManyAuthorInput[]
     skipDuplicates?: boolean
   }
 
-  export type ArtikelUpsertWithWhereUniqueWithoutAuthorInput = {
-    where: ArtikelWhereUniqueInput
-    update: XOR<ArtikelUpdateWithoutAuthorInput, ArtikelUncheckedUpdateWithoutAuthorInput>
-    create: XOR<ArtikelCreateWithoutAuthorInput, ArtikelUncheckedCreateWithoutAuthorInput>
+  export type ArticleUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    update: XOR<ArticleUpdateWithoutAuthorInput, ArticleUncheckedUpdateWithoutAuthorInput>
+    create: XOR<ArticleCreateWithoutAuthorInput, ArticleUncheckedCreateWithoutAuthorInput>
   }
 
-  export type ArtikelUpdateWithWhereUniqueWithoutAuthorInput = {
-    where: ArtikelWhereUniqueInput
-    data: XOR<ArtikelUpdateWithoutAuthorInput, ArtikelUncheckedUpdateWithoutAuthorInput>
+  export type ArticleUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: ArticleWhereUniqueInput
+    data: XOR<ArticleUpdateWithoutAuthorInput, ArticleUncheckedUpdateWithoutAuthorInput>
   }
 
-  export type ArtikelUpdateManyWithWhereWithoutAuthorInput = {
-    where: ArtikelScalarWhereInput
-    data: XOR<ArtikelUpdateManyMutationInput, ArtikelUncheckedUpdateManyWithoutAuthorInput>
+  export type ArticleUpdateManyWithWhereWithoutAuthorInput = {
+    where: ArticleScalarWhereInput
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyWithoutAuthorInput>
   }
 
-  export type ArtikelScalarWhereInput = {
-    AND?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
-    OR?: ArtikelScalarWhereInput[]
-    NOT?: ArtikelScalarWhereInput | ArtikelScalarWhereInput[]
-    id?: IntFilter<"Artikel"> | number
-    title?: StringFilter<"Artikel"> | string
-    content?: StringFilter<"Artikel"> | string
-    thumbnail?: StringFilter<"Artikel"> | string
-    publishedAt?: DateTimeFilter<"Artikel"> | Date | string
-    authorId?: IntFilter<"Artikel"> | number
+  export type ArticleScalarWhereInput = {
+    AND?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+    OR?: ArticleScalarWhereInput[]
+    NOT?: ArticleScalarWhereInput | ArticleScalarWhereInput[]
+    id?: IntFilter<"Article"> | number
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    thumbnail?: StringFilter<"Article"> | string
+    publishedAt?: DateTimeFilter<"Article"> | Date | string
+    authorId?: IntFilter<"Article"> | number
   }
 
   export type UserCreateWithoutArticlesInput = {
@@ -7389,7 +7389,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ArtikelCreateManyAuthorInput = {
+  export type ArticleCreateManyAuthorInput = {
     id?: number
     title: string
     content: string
@@ -7397,14 +7397,14 @@ export namespace Prisma {
     publishedAt?: Date | string
   }
 
-  export type ArtikelUpdateWithoutAuthorInput = {
+  export type ArticleUpdateWithoutAuthorInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     thumbnail?: StringFieldUpdateOperationsInput | string
     publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ArtikelUncheckedUpdateWithoutAuthorInput = {
+  export type ArticleUncheckedUpdateWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -7412,7 +7412,7 @@ export namespace Prisma {
     publishedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ArtikelUncheckedUpdateManyWithoutAuthorInput = {
+  export type ArticleUncheckedUpdateManyWithoutAuthorInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
