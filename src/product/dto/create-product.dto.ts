@@ -1,5 +1,10 @@
-import { IsString, IsNumber } from 'class-validator';
+import { IsOptional, IsString, IsNumber, IsArray, IsUrl } from 'class-validator';
 import { Type } from 'class-transformer';
+
+export class CreateLinkDto {
+  @IsString()
+  url: string;
+}
 
 export class CreateProductDto {
   @IsString()
@@ -8,12 +13,14 @@ export class CreateProductDto {
   @IsString()
   description: string;
 
-  @Type(() => Number) 
+  @Type(() => Number)
   @IsNumber()
   price: number;
 
-  @IsString()
-  link?: string;
+  @IsOptional()
+  @IsArray()
+  @IsUrl({}, { each: true }) 
+  links?: string[];
 
   @IsString()
   image: string;

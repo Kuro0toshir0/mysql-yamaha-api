@@ -132,9 +132,14 @@ exports.Prisma.ProductScalarFieldEnum = {
   description: 'description',
   image: 'image',
   price: 'price',
-  link: 'link',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LinkScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  productId: 'productId'
 };
 
 exports.Prisma.ArticleScalarFieldEnum = {
@@ -174,16 +179,19 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.ProductOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description',
+  image: 'image'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
 
-exports.Prisma.ProductOrderByRelevanceFieldEnum = {
-  name: 'name',
-  description: 'description',
-  image: 'image',
-  link: 'link'
+exports.Prisma.LinkOrderByRelevanceFieldEnum = {
+  url: 'url'
 };
 
 exports.Prisma.ArticleOrderByRelevanceFieldEnum = {
@@ -208,6 +216,7 @@ exports.Prisma.EventOrderByRelevanceFieldEnum = {
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
+  Link: 'Link',
   Article: 'Article',
   Gallery: 'Gallery',
   Event: 'Event'

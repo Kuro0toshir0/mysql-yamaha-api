@@ -5,25 +5,32 @@ import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(createProductDto: CreateProductDto) {
+    const { links, ...productData } = createProductDto;
+
     return this.prisma.product.create({
-      data: createProductDto,
+      data: {
+        ...productData,
+        links: links?.length ? { create: links.map(url => ({ url })) } : undefined,
+      },
+      include: { links: true },
     });
+
   }
 
   async findAll() {
     return this.prisma.product.findMany({
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: { createdAt: 'desc' },
+      include: { links: true },
     });
   }
 
   async findOne(id: number) {
     const product = await this.prisma.product.findUnique({
       where: { id },
+      include: { links: true },
     });
 
     if (!product) {
@@ -34,19 +41,35 @@ export class ProductService {
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
-    await this.findOne(id); // cek apakah produk ada
-
+    await this.findOne(id); 
+  
+    const { links, ...productData } = updateProductDto;
+    const data: any = { ...productData };
+  
+    if (links) {
+      await this.prisma.link.deleteMany({
+        where: { productId: id },
+      });
+  
+      data.links = {
+        create: links.map((url) => ({ url })),
+      };
+    }
+  
     return this.prisma.product.update({
       where: { id },
-      data: updateProductDto,
+      data,
+      include: { links: true },
     });
   }
+  
 
   async remove(id: number) {
-    await this.findOne(id); // cek apakah produk ada
+    await this.findOne(id); // pastikan produk ada
 
     return this.prisma.product.delete({
       where: { id },
+      include: { links: true },
     });
   }
 }
