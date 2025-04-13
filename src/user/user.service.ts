@@ -1,5 +1,7 @@
+// user.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import * as bcrypt from 'bcryptjs';  // Import bcrypt untuk hashing password
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
@@ -9,13 +11,20 @@ export class UserService {
 
   async create(createUserDto: CreateUserDto) {
     try {
-      return await this.prisma.user.create({ data: createUserDto });
+      const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+      
+      return await this.prisma.user.create({
+        data: {
+          name: createUserDto.name,          
+          username: createUserDto.username,
+          password: hashedPassword, 
+        },
+      });
     } catch (error) {
       console.error('Error creating user:', error);
       throw error;
     }
   }
-  
 
   async findAll() {
     return this.prisma.user.findMany();
@@ -29,14 +38,20 @@ export class UserService {
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     await this.findOne(id);
+    let updatedData = { ...updateUserDto };
+
+    if (updateUserDto.password) {
+      updatedData.password = await bcrypt.hash(updateUserDto.password, 10);
+    }
+
     return this.prisma.user.update({
       where: { id },
-      data: updateUserDto,
+      data: updatedData,
     });
   }
 
   async remove(id: number) {
-    await this.findOne(id);
+    await this.findOne(id); 
     return this.prisma.user.delete({ where: { id } });
   }
 }

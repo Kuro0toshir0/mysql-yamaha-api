@@ -9,18 +9,20 @@ import { ArticleModule } from './article/article.module';
 import { EventModule } from './event/event.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),  // Folder tempat file disimpan
-      serveRoot: '/uploads/',  // URL prefix untuk file yang disajikan
+      serveRoot: '/uploads/',  
     }),
     UserModule, 
     ProductModule,
      ArticleModule,
       EventModule,
        GalleryModule,
+       AuthModule,
        PrismaModule
       ],
   controllers: [AppController],
