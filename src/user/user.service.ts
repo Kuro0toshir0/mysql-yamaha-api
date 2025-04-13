@@ -1,68 +1,42 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service'; // Menggunakan Prisma untuk interaksi dengan DB
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UserResponseDto } from './dto/userresponse.dto';
+
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  // Membuat user baru
-  async create(createUserDto: CreateUserDto): Promise<UserResponseDto> {
-    const user = await this.prisma.user.create({
-      data: createUserDto,
-    });
-
-    return this.mapToResponseDto(user);
-  }
-
-  // Mendapatkan semua user
-  async findAll(): Promise<UserResponseDto[]> {
-    const users = await this.prisma.user.findMany();
-    return users.map(user => this.mapToResponseDto(user));
-  }
-
-  // Mendapatkan satu user berdasarkan ID
-  async findOne(id: number): Promise<UserResponseDto> {
-    const user = await this.prisma.user.findUnique({
-      where: { id },
-    });
-
-    if (!user) {
-      throw new NotFoundException('User not found');
+  async create(createUserDto: CreateUserDto) {
+    try {
+      return await this.prisma.user.create({ data: createUserDto });
+    } catch (error) {
+      console.error('Error creating user:', error);
+      throw error;
     }
+  }
+  
 
-    return this.mapToResponseDto(user);
+  async findAll() {
+    return this.prisma.user.findMany();
   }
 
-  // Memperbarui data user
-  async update(id: number, updateUserDto: UpdateUserDto): Promise<UserResponseDto> {
-    const user = await this.findOne(id); // Pastikan user ada sebelum update
+  async findOne(id: number) {
+    const user = await this.prisma.user.findUnique({ where: { id } });
+    if (!user) throw new NotFoundException('User not found');
+    return user;
+  }
 
-    const updatedUser = await this.prisma.user.update({
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    await this.findOne(id);
+    return this.prisma.user.update({
       where: { id },
       data: updateUserDto,
     });
-
-    return this.mapToResponseDto(updatedUser);
   }
 
-  // Menghapus user berdasarkan ID
-  async remove(id: number): Promise<void> {
-    const user = await this.findOne(id); // Pastikan user ada sebelum dihapus
-
-    await this.prisma.user.delete({
-      where: { id },
-    });
-  }
-
-  private mapToResponseDto(user: any): UserResponseDto {
-    return {
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-    };
+  async remove(id: number) {
+    await this.findOne(id);
+    return this.prisma.user.delete({ where: { id } });
   }
 }

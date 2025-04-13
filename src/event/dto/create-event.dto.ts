@@ -13,4 +13,6 @@ export class CreateEventDto {
   @IsDateString()
   date: string; // ISO 8601 format string
 
+  @IsString()
+  image: string;
 }

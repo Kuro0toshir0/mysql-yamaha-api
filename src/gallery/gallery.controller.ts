@@ -5,7 +5,6 @@ import { UpdateGalleryDto } from './dto/update-gallery.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
-import { Request } from 'express';
 
 @Controller('gallery')
 export class GalleryController {

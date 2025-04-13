@@ -12,6 +12,7 @@ import {
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { diskStorage } from 'multer';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as path from 'path';
 
@@ -20,16 +21,28 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  @UseInterceptors(FileInterceptor('image')) // handle file upload
-  create(
-    @Body() createProductDto: CreateProductDto,
-    @UploadedFile() file: Express.Multer.File,
-  ) {
-    if (file) {
-      createProductDto.image = path.join('uploads', file.filename); // simpan path image
+  @UseInterceptors(FileInterceptor('image', {
+      storage: diskStorage({
+        destination: path.join(process.cwd(), 'uploads'),
+        filename: (req, file, cb) => {
+          const ext = path.extname(file.originalname);  // Mendapatkan ekstensi file
+          const originalName = path.basename(file.originalname, ext);  // Mendapatkan nama file tanpa ekstensi
+          cb(null, `${originalName}${ext}`);  // Menyimpan file dengan nama asli
+        },
+      }),
+    }))
+    create(
+      @Body() CreateProductDto: CreateProductDto,
+      @UploadedFile() file: Express.Multer.File,
+    ) {
+
+      CreateProductDto.price = parseFloat(CreateProductDto.price as any);
+
+      if (file) {
+        CreateProductDto.image = `/uploads/${file.filename}`;
+      }
+      return this.productService.create(CreateProductDto);
     }
-    return this.productService.create(createProductDto);
-  }
 
   @Get()
   findAll() {
@@ -41,18 +54,32 @@ export class ProductController {
     return this.productService.findOne(+id);
   }
 
-  @Put(':id')
-  @UseInterceptors(FileInterceptor('image'))
+    @Put(':id')
+    @UseInterceptors(FileInterceptor('image', {
+    storage: diskStorage({
+      destination: path.join(process.cwd(), 'uploads'),
+      filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const originalName = path.basename(file.originalname, ext);
+        cb(null, `${originalName}${ext}`);
+      },
+    }),
+  }))
+
   update(
     @Param('id') id: string,
-    @Body() updateProductDto: UpdateProductDto,
+    @Body() UpdateProductDto: UpdateProductDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
+
+    UpdateProductDto.price = parseFloat(UpdateProductDto.price as any);
+    
     if (file) {
-      updateProductDto.image = path.join('uploads', file.filename);
+      UpdateProductDto.image = `/uploads/${file.filename}`;
     }
-    return this.productService.update(+id, updateProductDto);
+    return this.productService.update(+id, UpdateProductDto);
   }
+  
 
   @Delete(':id')
   remove(@Param('id') id: string) {
