@@ -132,6 +132,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   description: 'description',
   image: 'image',
   price: 'price',
+  link: 'link',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -173,10 +174,16 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.ProductOrderByRelevanceFieldEnum = {
   name: 'name',
   description: 'description',
-  image: 'image'
+  image: 'image',
+  link: 'link'
 };
 
 exports.Prisma.ArticleOrderByRelevanceFieldEnum = {
@@ -188,11 +195,6 @@ exports.Prisma.ArticleOrderByRelevanceFieldEnum = {
 exports.Prisma.GalleryOrderByRelevanceFieldEnum = {
   title: 'title',
   imageUrl: 'imageUrl'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
 };
 
 exports.Prisma.EventOrderByRelevanceFieldEnum = {

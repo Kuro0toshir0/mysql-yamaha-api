@@ -13,5 +13,8 @@ export class CreateProductDto {
   price: number;
 
   @IsString()
+  link?: string;
+
+  @IsString()
   image: string;
 }
