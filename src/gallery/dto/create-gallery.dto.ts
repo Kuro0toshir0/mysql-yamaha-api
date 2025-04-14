@@ -5,6 +5,6 @@ export class CreateGalleryDto {
   title: string;
 
   @IsUrl()
-  @IsOptional()  // Menandakan bahwa ini bisa kosong saat pembuatan pertama kali
+  @IsOptional()  
   imageUrl: string;
 }

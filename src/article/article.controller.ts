@@ -17,8 +17,8 @@ export class ArticleController {
       storage: diskStorage({
         destination: path.join(process.cwd(), 'uploads'),
         filename: (req, file, cb) => {
-          const ext = path.extname(file.originalname);  // Mendapatkan ekstensi file
-          const originalName = path.basename(file.originalname, ext);  // Mendapatkan nama file tanpa ekstensi
+          const ext = path.extname(file.originalname); 
+          const originalName = path.basename(file.originalname, ext);
           cb(null, `${originalName}${ext}`);  
         },
       }),
@@ -29,7 +29,6 @@ export class ArticleController {
     ) {
       CreateArticleDto.authorId = parseInt(CreateArticleDto.authorId as any);
       if (file) {
-        // Gunakan path relatif untuk URL akses file
         CreateArticleDto.thumbnail = `/uploads/${file.filename}`;
       }
       return this.Articleservice.create(CreateArticleDto);

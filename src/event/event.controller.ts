@@ -27,10 +27,9 @@ export class EventController {
       storage: diskStorage({
         destination: path.join(process.cwd(), 'uploads'),
         filename: (req, file, cb) => {
-          // Gunakan nama asli file tanpa modifikasi
-          const ext = path.extname(file.originalname);  // Mendapatkan ekstensi file
-          const originalName = path.basename(file.originalname, ext);  // Mendapatkan nama file tanpa ekstensi
-          cb(null, `${originalName}${ext}`);  // Menyimpan file dengan nama asli
+          const ext = path.extname(file.originalname); 
+          const originalName = path.basename(file.originalname, ext);  
+          cb(null, `${originalName}${ext}`);  
         },
       }),
     }))
@@ -56,28 +55,32 @@ export class EventController {
   }
 
   @Put(':id')
-@UseInterceptors(FileInterceptor('image', {
-  storage: diskStorage({
-    destination: path.join(process.cwd(), 'uploads'),
-    filename: (req, file, cb) => {
-      const ext = path.extname(file.originalname);
-      const originalName = path.basename(file.originalname, ext);
-      cb(null, `${originalName}${ext}`);
-    },
-  }),
-}))
-update(
-  @Param('id') id: string,
-  @Body() updateEventDto: UpdateEventDto,
-  @UploadedFile() file: Express.Multer.File,
-) {
-  if (file) {
-    updateEventDto.image = `/uploads/${file.filename}`;
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: path.join(process.cwd(), 'uploads'),
+        filename: (req, file, cb) => {
+          const ext = path.extname(file.originalname);
+          const name = path.basename(file.originalname, ext);
+          cb(null, `${name}${ext}`);
+        },
+      }),
+    }),
+  )
+  async update(
+    @Param('id') id: string,
+    @Body() updateEventDto: UpdateEventDto,
+    @UploadedFile() file?: Express.Multer.File,
+  ) {
+    const eventId = parseInt(id, 10);
+
+    if (file) {
+      updateEventDto.image = `/uploads/${file.filename}`;
+    }
+
+    return this.eventService.update(eventId, updateEventDto);
   }
-  return this.eventService.update(+id, updateEventDto);
-}
-
-
+  
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.eventService.remove(+id);

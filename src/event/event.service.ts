@@ -11,7 +11,7 @@ export class EventService {
     return this.prisma.event.create({
       data: {
         ...data,
-        date: new Date(data.date), // pastikan date berupa Date object
+        date: new Date(data.date),
       },
     });
   }
@@ -28,15 +28,22 @@ export class EventService {
     });
   }
 
-  update(id: number, data: UpdateEventDto) {
+  async update(id: number, data: UpdateEventDto) {
+    const existing = await this.prisma.event.findUnique({ where: { id } });
+    if (!existing) {
+      throw new Error('Event not found');
+    }
+  
     return this.prisma.event.update({
       where: { id },
       data: {
         ...data,
-        date: data.date ? new Date(data.date) : undefined,
+        image: data.image ?? existing.image,
+        date: data.date ? new Date(data.date) : existing.date,
       },
     });
   }
+  
 
   remove(id: number) {
     return this.prisma.event.delete({

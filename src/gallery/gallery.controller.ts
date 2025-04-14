@@ -15,10 +15,9 @@ export class GalleryController {
     storage: diskStorage({
       destination: path.join(process.cwd(), 'uploads'),
       filename: (req, file, cb) => {
-        // Gunakan nama asli file tanpa modifikasi
-        const ext = path.extname(file.originalname);  // Mendapatkan ekstensi file
-        const originalName = path.basename(file.originalname, ext);  // Mendapatkan nama file tanpa ekstensi
-        cb(null, `${originalName}${ext}`);  // Menyimpan file dengan nama asli
+        const ext = path.extname(file.originalname);  
+        const originalName = path.basename(file.originalname, ext); 
+        cb(null, `${originalName}${ext}`);  
       },
     }),
   }))

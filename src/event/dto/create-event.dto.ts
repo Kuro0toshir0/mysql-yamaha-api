@@ -11,7 +11,7 @@ export class CreateEventDto {
   location: string;
 
   @IsDateString()
-  date: string; // ISO 8601 format string
+  date: string; 
 
   @IsString()
   image: string;
